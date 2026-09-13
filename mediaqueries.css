@@ -1,13 +1,18 @@
 @media screen and (max-width: 1400px) {
+  section {
+    margin: 0 5rem;
+    min-height: fit-content;
+  }
   #profile {
     min-height: 83vh;
     margin-bottom: 4rem;
+    gap: 3rem;
   }
   .about-containers {
     flex-wrap: wrap;
   }
-  section {
-    min-height: fit-content;
+  .section-container {
+    gap: 2.5rem;
   }
 }
 
@@ -17,8 +22,16 @@
   }
   #hamburger-nav {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    padding: 0 5%;
+    min-height: 4.5rem;
+    height: auto;
+    padding: 0.75rem 5%;
+  }
+  #hamburger-nav .logo {
+    font-size: 1.75rem;
+    min-width: 0;
+    overflow-wrap: break-word;
   }
   .lang-btn--mobile {
     display: grid;
@@ -51,10 +64,30 @@
   .section__pic-container {
     width: 275px;
     height: 275px;
+    max-width: 100%;
+    margin: 0 auto 2rem;
+  }
+  .photo-stack-container {
+    width: 275px;
+    height: 275px;
     margin: 0 auto 2rem;
   }
   .about-containers {
     margin-top: 0;
+  }
+  .projects-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .about-details-container .about-containers .details-container {
+    max-width: 40rem;
+    margin: 0 auto;
   }
 }
 
@@ -64,6 +97,7 @@
     margin-bottom: 0;
   }
   footer nav {
+    min-height: 0;
     height: fit-content;
     margin-bottom: 1rem;
   }
@@ -72,8 +106,12 @@
   .btn-container {
     flex-wrap: wrap;
   }
+  .contact-info-upper-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
   .contact-info-container {
-    margin: 0;
+    margin: 0.5rem 0;
   }
   .contact-info-container p,
   .nav-links li a {
@@ -91,10 +129,23 @@
     gap: 0.5rem;
     text-align: center;
   }
-  .section__pic-container {
-    width: auto;
-    height: 46vw;
+  
+  #profile .section__pic-container {
+    width: min(70vw, 260px);
+    height: min(70vw, 260px);
     justify-content: center;
+  }
+  
+  .photo-stack-container {
+    width: min(100%, 320px);
+    height: min(80vw, 320px);
+    margin: 0 auto 2.5rem;
+  }
+  .photo-stack-item[data-stack-pos="1"] {
+    transform: translate(8px, 8px) rotate(3deg);
+  }
+  .photo-stack-item[data-stack-pos="2"] {
+    transform: translate(16px, 16px) rotate(-3deg);
   }
   .section__text__p2 {
     font-size: 1.25rem;
@@ -103,7 +154,31 @@
     font-size: 2rem;
   }
   .text-container {
-    text-align: justify;
+    text-align: left;
+    hyphens: auto;
+  }
+  .details-container {
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+  }
+  .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    padding: 0.5rem;
+  }
+  .skill-item i {
+    font-size: 2.5rem;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .project-img-wrapper {
+    height: 170px;
+  }
+  .btn {
+    min-width: 7rem;
+    padding: 0.85rem 1rem;
   }
   .theme-btn--mobile {
     width: 2.4rem;
@@ -130,5 +205,28 @@
   .preloader__text {
     font-size: clamp(2.75rem, 18vw, 5rem);
     gap: 0.25em;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  section {
+    margin: 0 4%;
+  }
+  .title {
+    font-size: 1.75rem;
+  }
+  #hamburger-nav .logo {
+    font-size: 1.25rem;
+  }
+  .btn-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .btn {
+    width: 100%;
+    max-width: 16rem;
+  }
+  .skill-item span {
+    font-size: 0.9rem;
   }
 }
