@@ -1,0 +1,767 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>> isa.exe</title>
+    <script>
+      (function () {
+        const t = localStorage.getItem("theme");
+        const dark = t
+          ? t === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (dark) document.documentElement.classList.add("dark");
+        document.documentElement.classList.add("is-loading");
+        const l = localStorage.getItem("lang");
+        if (l === "pt") document.documentElement.lang = "pt-BR";
+      })();
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+    />
+  </head>
+  <body>
+    <div id="preloader" aria-hidden="true">
+      <div class="preloader__inner">
+        <span class="preloader__text">
+          <span class="preloader__prompt">&gt;</span>
+          <span id="preloader-type"></span
+          ><span class="preloader__caret"></span>
+        </span>
+      </div>
+    </div>
+
+    <nav id="desktop-nav">
+      <div class="logo">> isa.exe</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          <li class="nav-controls">
+            <button
+              class="lang-btn"
+              onclick="toggleLang()"
+              aria-label="Switch language"
+              title="Switch language"
+            >
+              <svg class="lang-icon" viewBox="0 0 48 48" aria-hidden="true">
+                <circle class="lang-icon__ring" cx="24" cy="24" r="21" />
+                <text class="lang-icon__label" x="24" y="24">
+                  <tspan id="lang-label-desktop">EN</tspan>
+                </text>
+              </svg>
+            </button>
+            <button
+              class="theme-btn"
+              onclick="toggleTheme()"
+              aria-label="Toggle dark mode"
+              title="Toggle dark mode"
+            >
+              <svg
+                class="theme-icon theme-icon--moon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M21 14.2A9 9 0 1 1 9.8 3a7.6 7.6 0 0 0 11.2 11.2Z" />
+              </svg>
+              <svg
+                class="theme-icon theme-icon--sun"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="4.6" />
+                <path
+                  d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1"
+                />
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <nav id="hamburger-nav">
+      <div class="logo">Isabelle Duarte Santos</div>
+      <button
+        class="lang-btn lang-btn--mobile"
+        onclick="toggleLang()"
+        aria-label="Switch language"
+        title="Switch language"
+      >
+        <svg class="lang-icon" viewBox="0 0 48 48" aria-hidden="true">
+          <circle class="lang-icon__ring" cx="24" cy="24" r="21" />
+          <text class="lang-icon__label" x="24" y="24">
+            <tspan id="lang-label-mobile">EN</tspan>
+          </text>
+        </svg>
+      </button>
+      <button
+        class="theme-btn theme-btn--mobile"
+        onclick="toggleTheme()"
+        aria-label="Toggle dark mode"
+        title="Toggle dark mode"
+      >
+        <svg
+          class="theme-icon theme-icon--moon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M21 14.2A9 9 0 1 1 9.8 3a7.6 7.6 0 0 0 11.2 11.2Z" />
+        </svg>
+        <svg
+          class="theme-icon theme-icon--sun"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4.6" />
+          <path
+            d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1"
+          />
+        </svg>
+      </button>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li>
+            <a href="#about" onclick="toggleMenu()" data-i18n="nav.about"
+              >About</a
+            >
+          </li>
+          <li>
+            <a href="#skills" onclick="toggleMenu()" data-i18n="nav.skills"
+              >Skills</a
+            >
+          </li>
+          <li>
+            <a href="#projects" onclick="toggleMenu()" data-i18n="nav.projects"
+              >Projects</a
+            >
+          </li>
+          <li>
+            <a href="#contact" onclick="toggleMenu()" data-i18n="nav.contact"
+              >Contact</a
+            >
+          </li>
+        </div>
+      </div>
+    </nav>
+
+    <section id="profile">
+      <div class="section__pic-container">
+        <img
+          src="./assets/foto.jpeg"
+          alt="Isabelle Duarte Santos profile picture"
+          class="profile-pic"
+        />
+      </div>
+      <div class="section__text">
+        <p class="section__text__p1" data-i18n="profile.greet">Hello, I'm</p>
+        <h1 class="title">Isabelle Duarte Santos</h1>
+        <p class="section__text__p2" data-i18n="profile.role">
+          Computer Science Student
+        </p>
+        <div class="btn-container">
+          <div class="btn-container">
+            <button
+              class="btn btn-color-2"
+              onclick="downloadCV()"
+              data-i18n="profile.cv"
+            >
+              Download CV
+            </button>
+            <button
+              class="btn btn-color-1"
+              onclick="location.href = './#contact'"
+              data-i18n="profile.contact"
+            >
+              Contact Info
+            </button>
+          </div>
+        </div>
+        <div id="socials-container">
+          <a
+            href="https://www.linkedin.com/in/isabelle-duarte-santos"
+            target="_blank"
+          >
+            <img
+              src="./assets/linkedin.png"
+              alt="My LinkedIn profile"
+              class="icon"
+            />
+          </a>
+          <a href="https://github.com/isa991" target="_blank">
+            <img
+              src="./assets/github.png"
+              alt="My Github profile"
+              class="icon"
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <p class="section__text__p1 reveal" data-i18n="about.p1">
+        Get To Know More
+      </p>
+      <h1 class="title reveal" data-i18n="about.title">♡ About Me ☆</h1>
+      <div class="section-container">
+        <div
+          class="section__pic-container reveal photo-stack-container"
+          id="photo-stack"
+        >
+          <img
+            src="./assets/mini-eu.jpg"
+            alt="Mini eu (1)"
+            class="about-pic photo-stack-item active"
+            data-index="0"
+          />
+          <img
+            src="./assets/lupi-copa-pinhao.jpeg"
+            alt="Robótica (2)"
+            class="about-pic photo-stack-item active"
+            data-index="1"
+          />
+          <img
+            src="./assets/maratona-sbc.jpg"
+            alt="Maratona de Programação SBC 2026 (3)"
+            class="about-pic photo-stack-item"
+            data-index="2"
+          />
+          <img
+            src="./assets/clube-volei.jpeg"
+            alt="Clube de Vôlei (4)"
+            class="about-pic photo-stack-item"
+            data-index="3"
+          />
+          <img
+            src="./assets/voluntary-project.jpeg"
+            alt="Projeto Social (5)"
+            class="about-pic photo-stack-item"
+            data-index="4"
+          />
+        </div>
+
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container reveal">
+              <h3 id="about-card-title">
+                Undergraduate Student in Computer Science
+              </h3>
+              <p id="about-card-subtitle">
+                Pontifícia Universidade Católica do Paraná - PUCPR
+              </p>
+            </div>
+          </div>
+          <div class="text-container reveal">
+            <p id="about-text-content">
+              I'm 18 years old and currently at the fourth semester of my
+              degree. My hobbies include volleyball, >>music<< , singing,
+              drawing and gaming. At 8 years old, I self-taught myself english
+              to be able to communicate with other people online in games. My
+              main interests currently are in Networks and Security. I believe
+              that coding creates a real impact when applied to solve problems
+              and build useful solutions. My aim is to create with purpose while
+              developing both my technical and soft skills.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href = './#skills'"
+      />
+    </section>
+
+    <section id="skills">
+      <p class="section__text__p1 reveal" data-i18n="skills.p1">Explore My</p>
+      <h1 class="title reveal" data-i18n="skills.title">☆ Skills ♡</h1>
+      <div class="skills-details-container">
+        <div class="about-containers">
+          <div class="details-container skills-card reveal">
+            <div class="skills-grid">
+              <div class="skill-item">
+                <i class="devicon-java-plain colored"></i>
+                <span>Java</span>
+              </div>
+              <div class="skill-item">
+                <i class="devicon-python-plain colored"></i>
+                <span>Python</span>
+              </div>
+              <div class="skill-item">
+                <i class="devicon-c-plain colored"></i>
+                <span>C</span>
+              </div>
+              <div class="skill-item">
+                <i class="devicon-cplusplus-plain colored"></i>
+                <span>C++</span>
+              </div>
+              <div class="skill-item">
+                <i class="devicon-javascript-plain colored"></i>
+                <span>JavaScript</span>
+              </div>
+              <div class="skill-item">
+                <i class="devicon-react-original colored"></i>
+                <span>React</span>
+              </div>
+              <div class="skill-item">
+                <i class="devicon-nextjs-plain"></i>
+                <span>Next.js</span>
+              </div>
+              <div class="skill-item">
+                <i class="devicon-mysql-original colored"></i>
+                <span>MySQL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-chips reveal">
+          <span class="chip">Git</span>
+          <span class="chip">Github</span>
+          <span class="chip">Cisco Packet Tracer</span>
+          <span class="chip">Wireshark</span>
+          <span class="chip">Arduino IDE</span>
+          <span class="chip">Autodesk Fusion</span>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href = './#projects'"
+      />
+    </section>
+
+    <section id="projects">
+      <p class="section__text__p1 reveal" data-i18n="projects.p1">
+        Browse some of my
+      </p>
+      <h1 class="title reveal" data-i18n="projects.title">♡ Projects ☆</h1>
+      <div class="experience-details-container">
+        <div class="projects-grid">
+          <div class="details-container color-container reveal project-card">
+            <div class="project-img-wrapper">
+              <img
+                src="./assets/project-1.png"
+                alt="Project 1"
+                class="project-img"
+              />
+            </div>
+            <div class="project-info">
+              <p class="project-category" data-i18n="proj1.cat">
+                WEB DEVELOPMENT
+              </p>
+              <h2 class="project-title">Gen X</h2>
+              <p class="project-description" data-i18n="proj1.desc">
+                A medical web application developed in the discipline of
+                Creative Experience for the Institute Buko Kaesemodel with the
+                purpose of assessing Fragile X Syndrome. Based on symptoms
+                reported by the patient and its responsible during the
+                consultation, the system calculates a risk score that assists
+                physicians in deciding whether to refer the patient for a
+                diagnostic testing.
+              </p>
+              <hr class="project-divider" />
+              <p class="project-tech">
+                React, Next.js, CSS, JavaScript, Django, Docker
+              </p>
+              <div class="btn-container project-btn-container">
+                <a href="https://github.com/isa991/gen-X" target="_blank"
+                  ><button class="btn btn-color-2 project-btn">
+                    <svg
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                      style="margin-right: 0.2rem"
+                    >
+                      <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                      />
+                    </svg>
+                    <span data-i18n="btn.github">View on GitHub ➔</span>
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="details-container color-container reveal project-card">
+            <div class="project-img-wrapper">
+              <img
+                src="./assets/project-2.png"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <div class="project-info">
+              <p class="project-category" data-i18n="proj2.cat">
+                STRUCTURED NETWORKS
+              </p>
+              <h2 class="project-title" data-i18n="proj2.title">
+                Projection of a Corporative Network
+              </h2>
+              <p class="project-description" data-i18n="proj2.desc">
+                Design and simulation of a robust corporative network topology
+                with two branches through a three-layer distribution following
+                the hierarchical structure using Cisco Packet Tracer.
+                Implementation of routing protocols, VLANs, trunk and access
+                connections, public and private networks, a datacenter with
+                servers, NAT, firewall, VPN, ensuring secure and efficient data
+                transmission.
+              </p>
+              <hr class="project-divider" />
+              <p class="project-tech" data-i18n="proj2.tech">
+                Cisco Packet Tracer, Networking Protocols
+              </p>
+              <div class="btn-container project-btn-container">
+                <a href="./assets/project-2.png" target="_blank"
+                  ><button class="btn btn-color-2 project-btn">
+                    <span data-i18n="btn.view">View ➔</span>
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="details-container color-container reveal project-card">
+            <div class="project-img-wrapper">
+              <img
+                src="./assets/project-3.png"
+                alt="Project 3"
+                class="project-img"
+              />
+            </div>
+            <div class="project-info">
+              <p class="project-category" data-i18n="proj3.cat">
+                PYTHON DEVELOPMENT
+              </p>
+              <h2 class="project-title" data-i18n="proj3.title">
+                Virtual Memory Simulator
+              </h2>
+              <p class="project-description" data-i18n="proj3.desc">
+                The Virtual Memory project aims to simulate and demonstrate the
+                operation of different memory mapping techniques used in
+                computer systems. Developed in Python, the project covers
+                methods such as direct mapping, associative mapping,
+                set-associative mapping, and a customized mapping, allowing
+                users to understand how memory addresses are related between
+                main memory and cache memory. The application helps improve the
+                understanding of memory hierarchy and the differences between
+                the techniques used to optimize data access.
+              </p>
+              <hr class="project-divider" />
+              <p class="project-tech" data-i18n="proj3.tech">
+                Python, PyCharm, Virtual Memory
+              </p>
+              <div class="btn-container project-btn-container">
+                <a
+                  href="https://github.com/isa991/memoria-virtual"
+                  target="_blank"
+                  ><button class="btn btn-color-2 project-btn">
+                    <svg
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                      style="margin-right: 0.2rem"
+                    >
+                      <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                      />
+                    </svg>
+                    <span data-i18n="btn.github">View on GitHub ➔</span>
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="details-container color-container reveal project-card">
+            <div class="project-img-wrapper">
+              <img
+                src="./assets/project-4.jpeg"
+                alt="Project 4"
+                class="project-img"
+              />
+            </div>
+            <div class="project-info">
+              <p class="project-category" data-i18n="proj4.cat">
+                CYBER-PHYSICAL SYSTEMS
+              </p>
+              <h2 class="project-title">Data MQTT System</h2>
+              <p class="project-description" data-i18n="proj4.desc">
+                Establishment of communication using the MQTT protocol for
+                message exchange between a PC and a microcontroller, using
+                sensors and actuators to read data and communicate it between
+                the devices. We implemented a DHT11 sensor in the circuit to
+                read and display the sensor data. We also used a HCSR04
+                ultrasonic sensor to read distance data and send it to the PC
+                via MQTT, where it was displayed in a graphical interface.
+              </p>
+              <hr class="project-divider" />
+              <p class="project-tech" data-i18n="proj4.tech">
+                ESP32, Python, Sensors, IoT
+              </p>
+              <div class="btn-container project-btn-container">
+                <a
+                  href="https://github.com/isa991/data-mqtt-system"
+                  target="_blank"
+                  ><button class="btn btn-color-2 project-btn">
+                    <svg
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                      style="margin-right: 0.2rem"
+                    >
+                      <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                      />
+                    </svg>
+                    <span data-i18n="btn.github">View on GitHub ➔</span>
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="details-container color-container reveal project-card">
+            <div class="project-img-wrapper">
+              <img
+                src="./assets/project-5.png"
+                alt="Project 5"
+                class="project-img"
+              />
+            </div>
+            <div class="project-info">
+              <p class="project-category" data-i18n="proj5.cat">
+                PYTHON DEVELOPMENT
+              </p>
+              <h2 class="project-title" data-i18n="proj5.title">
+                Algorithm Reasoning
+              </h2>
+              <p class="project-description" data-i18n="proj5.desc">
+                A set of five lists and 40+ exercises developed in Python during
+                the first semester in the discipline of Algorithm Reasoning to
+                practice problem-solving skills. The project includes various
+                challenges that require logical thinking and the application of
+                programming concepts to solve problems efficiently. It serves as
+                a valuable resource for improving coding skills and
+                understanding algorithmic principles.
+              </p>
+              <hr class="project-divider" />
+              <p class="project-tech">Python, PyCharm</p>
+              <div class="btn-container project-btn-container">
+                <a
+                  href="https://github.com/isa991/RACIOCINIO_ALGORITMICO"
+                  target="_blank"
+                  ><button class="btn btn-color-2 project-btn">
+                    <svg
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                      style="margin-right: 0.2rem"
+                    >
+                      <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                      />
+                    </svg>
+                    <span data-i18n="btn.github">View on GitHub ➔</span>
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="details-container color-container reveal project-card">
+            <div class="project-img-wrapper">
+              <img
+                src="./assets/project-6.png"
+                alt="Project 6"
+                class="project-img"
+              />
+            </div>
+            <div class="project-info">
+              <p class="project-category" data-i18n="proj6.cat">ROBOTICS</p>
+              <h2 class="project-title" data-i18n="proj6.title">
+                Fairyweight Combat Robot
+              </h2>
+              <p class="project-description" data-i18n="proj6.desc">
+                Idealization, modeling, and assembly of a radio controlled ramp
+                combat robot for the Fairyweight (150g) category, using Arduino
+                for programming, Autodesk Fusion for 3D modeling and simulation,
+                and assembling electronic and hardware components such as
+                motors, sensors, and batteries.
+              </p>
+              <hr class="project-divider" />
+              <p class="project-tech" data-i18n="proj6.tech">
+                C, Arduino IDE, Hardware Design, Electronics, Autodesk Fusion,
+                Creality Print, 3D Impression, Soldering, Mechanical Assembly
+              </p>
+              <div class="btn-container project-btn-container">
+                <p data-i18n="btn.dev">In development</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="details-container color-container reveal project-card">
+            <div class="project-img-wrapper">
+              <img
+                src="./assets/project-7.png"
+                alt="Project 7"
+                class="project-img"
+              />
+            </div>
+            <div class="project-info">
+              <p class="project-category" data-i18n="proj7.cat">
+                GAME DEVELOPMENT
+              </p>
+              <h2 class="project-title">Capivara: A máfia selvagem</h2>
+              <p class="project-description" data-i18n="proj7.desc">
+                A 2D game project from the first semester featuring the
+                adventurous journey and challenges of Capi, the Capybara.
+                Developed in Construct 3 with a focus on engaging story and
+                gameplay mechanics and pixel art aesthetics.
+              </p>
+              <hr class="project-divider" />
+              <p class="project-tech" data-i18n="proj7.tech">
+                Construct 3, Game Logic, Story Development, Pixel Art
+              </p>
+              <div class="btn-container project-btn-container">
+                <a
+                  href="https://isa991.itch.io/capivara-a-mafia-selvagem"
+                  target="_blank"
+                  ><button class="btn btn-color-2 project-btn">
+                    Itch.io
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="details-container color-container reveal project-card">
+            <div class="project-img-wrapper">
+              <img
+                src="./assets/project-8.png"
+                alt="Project 8"
+                class="project-img"
+              />
+            </div>
+            <div class="project-info">
+              <p class="project-category" data-i18n="proj8.cat">
+                WEB DEVELOPMENT
+              </p>
+              <h2 class="project-title" data-i18n="proj8.title">
+                Initial Portfolio Website
+              </h2>
+              <p class="project-description" data-i18n="proj8.desc">
+                A responsive and interactive personal portfolio website
+                showcasing projects, skills, and contact information built with
+                HTML, CSS and JavaScript during the first semester for the
+                discipline of Creative Experience. Is now outdated since the
+                development of this current portfolio website.
+              </p>
+              <hr class="project-divider" />
+              <p class="project-tech">HTML, CSS, JavaScript</p>
+              <div class="btn-container project-btn-container">
+                <a
+                  href="https://github.com/isa991/experiencia-criativa"
+                  target="_blank"
+                  ><button class="btn btn-color-2 project-btn">
+                    <svg
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      viewBox="0 0 16 16"
+                      style="margin-right: 0.2rem"
+                    >
+                      <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                      />
+                    </svg>
+                    <span data-i18n="btn.github">View on GitHub ➔</span>
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href = './#contact'"
+      />
+    </section>
+
+    <section id="contact">
+      <p class="section__text__p1 reveal" data-i18n="contact.p1">
+        Get in Touch
+      </p>
+      <h1 class="title reveal" data-i18n="contact.title">☆ Contact Me! ♡</h1>
+      <div class="contact-info-upper-container reveal">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p>
+            <a href="mailto:isaduartsantos@gmail.com"
+              >isaduartsantos@gmail.com</a
+            >
+          </p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p>
+            <a
+              href="https://www.linkedin.com/in/isabelle-duarte-santos"
+              target="_blank"
+              >LinkedIn</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <nav>
+        <div class="nav-links-container">
+          <ul class="nav-links">
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+            <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <p data-i18n="footer.copy">
+        Copyright &#169; 2026 Isabelle Duarte Santos. All Rights Reserved.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

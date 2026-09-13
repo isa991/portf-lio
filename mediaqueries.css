@@ -1,0 +1,134 @@
+@media screen and (max-width: 1400px) {
+  #profile {
+    min-height: 83vh;
+    margin-bottom: 4rem;
+  }
+  .about-containers {
+    flex-wrap: wrap;
+  }
+  section {
+    min-height: fit-content;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #desktop-nav {
+    display: none;
+  }
+  #hamburger-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5%;
+  }
+  .lang-btn--mobile {
+    display: grid;
+    margin-left: auto;
+    margin-right: 0.75rem;
+  }
+  .theme-btn--mobile {
+    display: grid;
+    margin-right: 1.5rem;
+  }
+  #skills,
+  .experience-details-container {
+    margin-top: 2rem;
+  }
+  #profile,
+  .section-container {
+    display: block;
+  }
+  .arrow {
+    display: none;
+  }
+  section {
+    min-height: fit-content;
+    margin: 0 5%;
+    padding-bottom: 4rem;
+  }
+  .section-container {
+    height: fit-content;
+  }
+  .section__pic-container {
+    width: 275px;
+    height: 275px;
+    margin: 0 auto 2rem;
+  }
+  .about-containers {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #profile {
+    min-height: 83vh;
+    margin-bottom: 0;
+  }
+  footer nav {
+    height: fit-content;
+    margin-bottom: 1rem;
+  }
+  .about-containers,
+  .contact-info-upper-container,
+  .btn-container {
+    flex-wrap: wrap;
+  }
+  .contact-info-container {
+    margin: 0;
+  }
+  .contact-info-container p,
+  .nav-links li a {
+    font-size: 1rem;
+  }
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+  .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .section__pic-container {
+    width: auto;
+    height: 46vw;
+    justify-content: center;
+  }
+  .section__text__p2 {
+    font-size: 1.25rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .text-container {
+    text-align: justify;
+  }
+  .theme-btn--mobile {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 1rem;
+  }
+  .theme-btn--mobile .theme-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  .lang-btn--mobile {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 0.6rem;
+  }
+  .lang-btn--mobile .lang-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .chip {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.9rem;
+  }
+  .preloader__text {
+    font-size: clamp(2.75rem, 18vw, 5rem);
+    gap: 0.25em;
+  }
+}
